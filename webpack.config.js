@@ -26,7 +26,7 @@ const config = {
     mode: 'development',
     watch: true,
     watchOptions: {
-        ignored: ['public_html/assets/*.js', 'doc/assets/*.js', 'node_modules'],
+        ignored: ['public_html/assets/*.js', 'docs/assets/*.js', 'node_modules'],
     },
 }
 module.exports = (env, argv) => {
@@ -41,8 +41,8 @@ module.exports = (env, argv) => {
 
     if (argv.mode === 'production') {
         config.output = {
-            path: path.resolve(__dirname, 'doc/build'),
-            publicPath: '/doc/build/',
+            path: path.resolve(__dirname, 'docs/build'),
+            publicPath: '/docs/build/',
             filename: '[name].bundle.js'
         }
     }
