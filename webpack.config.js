@@ -1,17 +1,10 @@
-'use strict';
-
-const webpack = require('webpack');
 const path = require('path');
 
-module.exports = {
+const config = {
     entry: {
         app: './src/app.js'
     },
-    output: {
-        path: path.resolve(__dirname, 'public_html/build'),
-        publicPath: '/public_html/build/',
-        filename: '[name].bundle.js'
-    },
+
     module: {
         rules: [
             {
@@ -33,7 +26,26 @@ module.exports = {
     mode: 'development',
     watch: true,
     watchOptions: {
-        ignored: ['public_html/assets/*.js', 'node_modules'],
-        // poll: 5000,
+        ignored: ['public_html/assets/*.js', 'doc/assets/*.js', 'node_modules'],
     },
+}
+module.exports = (env, argv) => {
+
+    if (argv.mode === 'development') {
+        config.output = {
+            path: path.resolve(__dirname, 'public_html/build'),
+            publicPath: '/public_html/build/',
+            filename: '[name].bundle.js'
+        }
+    }
+
+    if (argv.mode === 'production') {
+        config.output = {
+            path: path.resolve(__dirname, 'doc/build'),
+            publicPath: '/doc/build/',
+            filename: '[name].bundle.js'
+        }
+    }
+
+    return config;
 };
