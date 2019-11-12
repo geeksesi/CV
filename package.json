@@ -25,6 +25,7 @@
     "style-loader": "^1.0.0"
   },
   "scripts": {
-    "build": "webpack --build"
+    "build": "webpack --build --mode=development",
+    "publish": "webpack --build --mode=production"
   }
 }
