@@ -1,13 +1,15 @@
 import React from "react";
+import { Row, Col } from 'antd';
+import About from './About';
+
 import "./App.css";
 
-
 export default class App extends React.Component {
-    
+
     render() {
         return (
             <div className="App">
-                <h1>Hello World</h1>
+                <Row><About /></Row>
             </div>
         );
     }
